@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Badge, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Comments from "./Comments";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -28,8 +29,8 @@ const MovieDetails = () => {
   }, []);
   return (
     <Container className="d-flex justify-content-center">
-      <Row>
-        <Col>
+      <Row style={{ width: "700px" }}>
+        <Col xs={12} md={7}>
           <Card>
             <Card.Img variant="top" src={film.Poster} />
             <Card.Body>
@@ -39,6 +40,9 @@ const MovieDetails = () => {
               </Card.Text>
               <Card.Text>
                 Tipologia: <Badge bg="info">{film.Type}</Badge>
+              </Card.Text>
+              <Card.Text>
+                Genre : <Badge bg="info">{film.Genre}</Badge>
               </Card.Text>
               <Card.Text>
                 imbdID Rating : <Badge bg="info">{film.imdbRating}</Badge>
@@ -51,6 +55,9 @@ const MovieDetails = () => {
               </Card.Text>
             </Card.Body>
           </Card>
+        </Col>
+        <Col xs={12} md={5}>
+          <Comments filmId={params.filmId} />
         </Col>
       </Row>
     </Container>
