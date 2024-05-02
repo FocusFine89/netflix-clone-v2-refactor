@@ -97,7 +97,7 @@ class Gallery extends Component {
                       <Card.Text>Anno: {films.Year}</Card.Text>
                       <NavLink
                         className="btn btn-info w-100"
-                        to={`/tvShows/Dettaglio/${films.Title}`}
+                        to={`/tvShows/Dettaglio/${films.imdbID}`}
                       >
                         Dettaglio
                       </NavLink>

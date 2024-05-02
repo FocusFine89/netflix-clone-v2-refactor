@@ -9,16 +9,14 @@ const MovieDetails = () => {
   const [film, setFilm] = useState("");
 
   const getFetch = () => {
-    fetch(
-      "http://www.omdbapi.com/?i=tt3896198&apikey=6538f3d5&s=" + params.filmId
-    )
+    fetch("http://www.omdbapi.com/?apikey=6538f3d5&i=" + params.filmId)
       .then((response) => {
         if (response.ok) {
           return response.json();
         }
       })
       .then((response) => {
-        setFilm(response.Search[0]);
+        setFilm(response);
         console.log(film);
       });
   };
@@ -37,13 +35,19 @@ const MovieDetails = () => {
             <Card.Body>
               <Card.Text className="h4">{film.Title}</Card.Text>
               <Card.Text>
-                Anno: <Badge bg="info">{film.Year}</Badge>
+                Anno: <Badge bg="info">{film.Released}</Badge>
               </Card.Text>
               <Card.Text>
                 Tipologia: <Badge bg="info">{film.Type}</Badge>
               </Card.Text>
               <Card.Text>
-                imbdID: <Badge bg="info">{film.imdbID}</Badge>
+                imbdID Rating : <Badge bg="info">{film.imdbRating}</Badge>
+              </Card.Text>
+              <Card.Text>
+                Language : <Badge bg="info">{film.Language}</Badge>
+              </Card.Text>
+              <Card.Text>
+                Runtime : <Badge bg="info">{film.Runtime}</Badge>
               </Card.Text>
             </Card.Body>
           </Card>
